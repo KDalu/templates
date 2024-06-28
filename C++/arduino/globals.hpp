@@ -26,6 +26,8 @@
 #ifndef GLOBALS_HPP
 #define GLOBALS_HPP
 
+#include <cstddef>
+
 /***********************************************************************************
  * Global Definitions and Macros
  **********************************************************************************/
@@ -35,7 +37,6 @@
  * Global Typedefs
  **********************************************************************************/
 typedef unsigned int TimerId_t;
-typedef unsigned long TimerDur_t;
 
 /***********************************************************************************
  * Global Enumerations and Structures

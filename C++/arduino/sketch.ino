@@ -26,11 +26,17 @@
 #include "globals.hpp"
 #include "debug.hpp"
 #include "EventQueueModule.hpp"
+#include "TimerModule.hpp"
 #include "Task.hpp"
 
 void setup()
 {
+#if CFG_DEBUG
+    Serial.begin(115200);
+#endif
 
+    initEventQueue();
+    initTimer();
 }
 
 void loop()

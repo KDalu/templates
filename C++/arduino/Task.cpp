@@ -45,6 +45,10 @@ Task::Task()
 
 /**
  * @brief Runs the Task's finite state machine/s.
+ * @param pEvent pointer to EventInfo_t data type that contains the event to be
+ * serviced.
+ * @return Pointer to EventInfo_t data type. NULL means the event was handled,
+ * otherwise it will contain the details of the event that was not handled.
  */
 EventInfo_t* Task::TaskRun(EventInfo_t* pEvent)
 {
@@ -57,13 +61,17 @@ EventInfo_t* Task::TaskRun(EventInfo_t* pEvent)
 }
 
 /**
- * @brief Handles events while the state machine is at the <First> state.
+ * @brief Handles events while the state machine is at TASK_FIRST_STATE.
+ * @param pEvent pointer to EventInfo_t data type that contains the event to be
+ * serviced.
+ * @return Pointer to EventInfo_t data type. NULL means the event was handled,
+ * otherwise it will contain the details of the event that was not handled.
  */
 EventInfo_t* Task::TaskFirstState(EventInfo_t* pEvent)
 {
     EventInfo_t* pRetEvent = pEvent;
 
-    DEBUG_LVL1("<Task>: Entered <First> State.");
+    DEBUG_LVL1("<Task>: Entered TASK_FIRST_STATE.");
 
     switch (pEvent->EventId)
     {
@@ -72,7 +80,32 @@ EventInfo_t* Task::TaskFirstState(EventInfo_t* pEvent)
             sendEvent(TASK_SECOND_EVENT, FIRST_TASK);
             pRetEvent = NULL;
             break;
+        default:
+            break;
+    }
+
+    return pRetEvent;
+}
+
+/**
+ * @brief Handles events while the state machine is at TASK_SECOND_STATE.
+ * @param pEvent pointer to EventInfo_t data type that contains the event to be
+ * serviced.
+ * @return Pointer to EventInfo_t data type. NULL means the event was handled,
+ * otherwise it will contain the details of the event that was not handled.
+ */
+EventInfo_t* Task::TaskSecondState(EventInfo_t* pEvent)
+{
+    EventInfo_t* pRetEvent = pEvent;
+
+    DEBUG_LVL1("<Task>: Entered TASK_SECOND_STATE.");
+
+    switch (pEvent->EventId)
+    {
         case TASK_SECOND_EVENT:
+            currentState = TASK_SECOND_STATE;
+            sendEvent(TASK_SECOND_EVENT, FIRST_TASK);
+            pRetEvent = NULL;
             break;
         default:
             break;

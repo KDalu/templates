@@ -62,8 +62,8 @@ private:
     typedef EventInfo_t* (Task::*TaskStateMachine_t)(EventInfo_t* pEvent);
 
     TaskStateMachine_t TaskFsm[NUM_TASK_STATES] = {&Task::TaskFirstState,
-                                                 &Task::TaskSecondState
-                                                };
+                                                   &Task::TaskSecondState
+                                                  };
 
     // Private variables
     TaskStates_t currentState;

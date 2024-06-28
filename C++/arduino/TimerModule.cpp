@@ -23,36 +23,49 @@
  *
  ***********************************************************************************/
 
-#ifndef TIMER_MODULE_HPP
-#define TIMER_MODULE_HPP
-
-#include "globals.hpp"
+#include "TimerModule.hpp"
 #include "EventQueueModule.hpp"
 
 /***********************************************************************************
- * Definitions and Macros
- **********************************************************************************/
-#define HW_TIMER_INTERVAL_IN_MS     50
-#define TIMER_INACTIVE              128
-
-/***********************************************************************************
- * Typedefs
- **********************************************************************************/
-typedef unsigned long TimerDur_t;
-
-/***********************************************************************************
- * Enumerations and Structures
+ * Variable Definitions
  **********************************************************************************/
 
 
 /***********************************************************************************
- * Function Declarations
+ * Function Definitions
  **********************************************************************************/
 
-void TimerIsrHandler();
-void initTimer();
-void stopTimer(TimerId_t TimerId);
-TimerId_t startTimer(TimerDur_t DurationInMs, TaskId_t TaskId);
+/**
+ * @brief Interrupt service routine for timer interrupts.
+ */
+void TimerIsrHandler()
+{
 
+}
 
-#endif
+/**
+ * @brief Initializes the timer module.
+ */
+void initTimer()
+{
+
+}
+
+/**
+ * @brief Stops a currently running timer.
+ * @param TimerId Timer Id to be stopped.
+ */
+void stopTimer(TimerId_t TimerId)
+{
+
+}
+
+/**
+ * @brief Starts a timer that will periodically trigger an interrupt.
+ * @param DurationInMs Time elapsed between interrupts in milliseconds.
+ * @param TaskId Task that requested the timer.
+ */
+TimerId_t startTimer(TimerDur_t DurationInMs, TaskId_t TaskId)
+{
+
+}

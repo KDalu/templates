@@ -78,6 +78,7 @@ struct EventQueueWs_t
 /***********************************************************************************
  * Function Declarations
  **********************************************************************************/
+
 void initEventQueue();
 int sendEvent(EventId_t EventId, TaskId_t TaskId, TimerId_t TimerId = 128);
 int receiveEvent(EventInfo_t* pEvent);
